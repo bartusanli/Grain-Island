@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StrawberryData
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   cropName: Strawberry
-  sellPrice: 2
-  totalGrowthTime: 10
+  sellPrice: 1
+  totalGrowthTime: 30
   growthStages:
   - {fileID: 8369948372191450990, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
   - {fileID: -3402868906910896487, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
@@ -22,5 +22,5 @@ MonoBehaviour:
   - {fileID: 240733362411572873, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
   - {fileID: 1734387795819554390, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
   - {fileID: 8578180459406042070, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
-  minHarvestAmount: 1
-  maxHarvestAmount: 3
+  minHarvestAmount: 2
+  maxHarvestAmount: 5
