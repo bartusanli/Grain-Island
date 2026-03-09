@@ -1,4 +1,4 @@
-using System.Collections.Generic; // Dictionary kullanmak için gerekli kütüphane
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
@@ -17,7 +17,7 @@ public class InteractionSystem : MonoBehaviour
     public GameObject cropPrefab;
     public CropData selectedCropData;
 
-    // YENÝ: Hangi koordinata ekin ektiðimizi hafýzada tutacak sözlük (Dictionary)
+    // Hangi koordinata ekin ektiðimizi hafýzada tutacak sözlük
     private Dictionary<Vector3Int, GameObject> plantedCrops = new Dictionary<Vector3Int, GameObject>();
 
     void Start()
@@ -46,7 +46,6 @@ public class InteractionSystem : MonoBehaviour
 
         if (interactableTilemap.HasTile(cellPosition))
         {
-            // Týkladýðýmýz hücredeki GÜNCEL görseli (Tile) alýyoruz
             TileBase currentTile = interactableTilemap.GetTile(cellPosition);
 
             // DURUM 1: Týklanan yer henüz TARLA yapýlmamýþsa
@@ -70,18 +69,42 @@ public class InteractionSystem : MonoBehaviour
                         cropBehaviour.cropData = selectedCropData;
                     }
 
-                    // Ektiðimiz tohumu, koordinatýyla birlikte hafýzaya (Dictionary) kaydediyoruz
                     plantedCrops.Add(cellPosition, newCrop);
 
                     Debug.Log("Tarlaya tohum ekildi: " + cellPosition);
                 }
             }
-            // DURUM 3: Toprak tarla yapýlmýþ ve zaten tohum ekilmiþse (Üst üste binmeyi engeller)
+            // DURUM 3: HASAT MEKANÝÐÝ
             else
             {
-                Debug.Log("DÝKKAT: Burada zaten büyümekte olan bir ekin var!");
+                // Sözlük üzerinden o koordinattaki objeyi anýnda buluyoruz
+                GameObject existingCrop = plantedCrops[cellPosition];
+                CropBehaviour cropBehaviour = existingCrop.GetComponent<CropBehaviour>();
 
-                // Ýpucu: Bir sonraki aþamada "Hasat Mekaniðini" tam olarak bu bloðun içine yazacaðýz!
+                if (cropBehaviour != null)
+                {
+                    // Bitki hasat edilebilir duruma gelmiþ mi?
+                    if (cropBehaviour.isHarvestable)
+                    {
+                        // ScriptableObject içindeki min-max deðerlerine göre rastgele ürün miktarý hesapla
+                        int harvestAmount = Random.Range(cropBehaviour.cropData.minHarvestAmount, cropBehaviour.cropData.maxHarvestAmount + 1);
+
+                        // Singleton üzerinden InventoryManager'a ulaþ ve ürünü ekle
+                        InventoryManager.Instance.AddItem(cropBehaviour.cropData.cropName, harvestAmount);
+
+                        // 1. Objeyi sahneden (bellekten) sil
+                        Destroy(existingCrop);
+
+                        // 2. Sözlükten o koordinatýn kaydýný sil ki ileride tekrar tohum ekilebilsin
+                        plantedCrops.Remove(cellPosition);
+
+                        Debug.Log("HASAT BAÞARILI! Ürün toplandý: " + cellPosition);
+                    }
+                    else
+                    {
+                        Debug.Log("DÝKKAT: Ekin henüz büyüme aþamasýnda, hasat edilemez!");
+                    }
+                }
             }
         }
     }

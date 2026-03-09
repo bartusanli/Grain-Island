@@ -23,4 +23,4 @@ MonoBehaviour:
   - {fileID: 1734387795819554390, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
   - {fileID: 8578180459406042070, guid: 0fee39d71d7ea5440a4a67964054a022, type: 3}
   minHarvestAmount: 2
-  maxHarvestAmount: 5
+  maxHarvestAmount: 4
