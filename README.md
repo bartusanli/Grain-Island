@@ -13,38 +13,38 @@
 
 ## 🌊 Overview
 
-In **Grain Island**, you are not stranded on static bedrock. The island beneath your feet is the shell of an ancient, breathing sea titan. Every tree felled and ore extracted disturbs the slumbering creature, shifting tides and triggering immediate geological reactions.
+In **Grain Island**, you are not stranded on static bedrock. The island beneath your feet is the shell of an ancient, breathing sea titan. Every tree felled and mineral vein extracted disturbs the slumbering creature, shifting coastal tides and triggering metabolic reactions.
 
-Instead of passive waiting cycles, *Grain Island* introduces a dynamic risk-reward dynamic: pushing the creature's unrest to its limit yields rapid resource respawns and exposes rare mineral veins. However, crossing the threshold unleashes devastating seismic tremors. Survival demands that you become not just an extractor, but a devoted caretaker.
+Instead of passive waiting cycles, *Grain Island* introduces an active risk-reward loop: pushing the creature's unrest to its upper limit yields rapid resource respawns and exposes rare mineral nodes. However, crossing the threshold unleashes devastating seismic tremors. Survival demands that you become not just an extractor, but a devoted caretaker.
 
 ---
 
 ## 🎮 Core Gameplay Mechanics
 
 ### 1. The Slumbering Behemoth & Restlessness Gauge
-* **Living Surface:** The island's geography shifts based on the leviathan's metabolic state.
-* **Push-Your-Luck Progression:** Harvesting wood and mining minerals directly fills the **Restlessness Bar**.
-* **High-Risk High-Reward:** As unrest reaches 80–90%, coastal waters recede faster and rare sapphire/gold mineral nodes regenerate at accelerated rates.
+* **Living Surface:** The island's geography dynamically shifts based on the leviathan's agitation level.
+* **Push-Your-Luck Progression:** Harvesting lumber and mining minerals directly fills the **Restlessness Bar**.
+* **High-Risk High-Reward:** As unrest reaches 80–90%, coastal waters recede and rare sapphire/gold mineral nodes regenerate at accelerated rates.
 
 ### 2. Active Pacification (No Passive Decay)
 * **Symbiotic Agriculture:** The creature cannot be calmed by waiting idly.
 * **Healing Acts:** Tilling soil, planting saplings, and watering seedlings actively soothe the leviathan, lowering the unrest gauge.
-* **Strategic Tension:** When unrest approaches 95%, players must immediately transition from greedy mining to frantic agricultural restoration.
+* **Strategic Tension:** When unrest approaches critical levels (90%+), players must transition instantly from aggressive mining to frantic agricultural restoration.
 
 ### 3. The "Slam" Phase & Dynamic Crisis Management
 * **The Threshold (100% Unrest):** If the gauge caps, the leviathan slams its dorsal shell against the ocean surface.
-* **Non-Lethal, High-Stakes Consequence:**
-  * Structures and workstations suffer physical damage, requiring immediate repairs.
-  * Quality crops drop a rank (e.g., Sapphire $\rightarrow$ Gold $\rightarrow$ Silver $\rightarrow$ Copper).
-* **Emergency Rebound:** Players spend the aftermath triaging repairs, stabilizing food supplies, and recovering from their own greed.
+* **Consequences:**
+  * Workstations, fences, and storage chests suffer physical structural damage, requiring emergency repairs.
+  * Quality crops drop a grade (Sapphire → Gold → Silver → Standard).
+* **Emergency Rebound:** Players spend the aftermath stabilizing food supplies, repairing facilities, and recovering from their own greed without facing an abrupt Game Over screen.
 
 ---
 
 ## 🎨 Art Style & Visual Direction
 
-* **Stylized 3D / Low-Poly:** Inspired by the charming, colorful, and vibrant aesthetic of games like *Overcooked!*, combined with an isometric 2.5D camera view.
-* **Dynamic Feedback & "Juice":** Exaggerated squash-and-stretch object physics, screen shakes driven by DOTween, procedural water shaders with foamy tidelines, and crisp particle VFX on impacts.
-* **Atmospheric Contrast:** Warm, pastel tranquility during balance; shifting to turbulent, high-contrast ocean swells and ground tremors when unrest peaks.
+* **Stylized 3D / Low-Poly:** Inspired by the colorful, expressive, and readable visual design of *Overcooked!*, presented from an isometric 2.5D camera angle.
+* **Juice & Game Feel:** Squash-and-stretch object feedback, dynamic camera shakes via DOTween, procedural water shaders with foamy tidelines, and impact particle effects.
+* **Atmospheric Contrast:** Calming pastel tones during balance, contrasting sharply with turbulent ocean swells and ground tremors when unrest peaks.
 
 ---
 
@@ -53,12 +53,12 @@ Instead of passive waiting cycles, *Grain Island* introduces a dynamic risk-rewa
 * **Engine:** Unity (Universal Render Pipeline - URP)
 * **Language:** C# (.NET)
 * **Architecture:**
-  * **Event-Driven Architecture:** Decoupled event messaging (`Action<T>` / ScriptableObject GameEvents) connecting world actions to the Restlessness Manager.
-  * **Grid-Based Placement:** Spatial partitioning for clean farming, crop stages, and building snapping.
-  * **Input System:** Unity New Input System (Gamepad & Keyboard/Mouse support).
-* **Tooling & Packages:**
-  * **DOTween:** Procedural UI animations, camera shakes, and prop bounces.
-  * **Blender:** Low-poly 3D modeling and lightweight character rigging.
+  * **Event-Driven Messaging:** Decoupled event buses connecting resource extraction, farming, and UI directly to the central `RestlessnessManager`.
+  * **Grid-Based Interaction:** Spatial partitioning for clean tilling, crop lifecycle tracking, and structure placement snapping.
+  * **Input System:** Unity New Input System supporting seamless switching between Keyboard/Mouse and Gamepad.
+* **External Tools & Packages:**
+  * **DOTween (Demigiant):** Procedural UI animations, bouncy feedback, and screen shakes.
+  * **Blender:** 3D low-poly modeling, UV unwrap, and lightweight character rigging.
 
 ---
 
@@ -85,3 +85,22 @@ Instead of passive waiting cycles, *Grain Island* introduces a dynamic risk-rewa
 1. Clone the repository:
    ```bash
    git clone [https://github.com/](https://github.com/)<your-username>/grain-island.git
+Open Unity Hub and select Add project from disk.
+
+Select the root folder of the cloned repository.
+
+Launch the project using Unity 2022.3 LTS and open:
+
+Plaintext
+Assets/Scenes/MainIsland.unity
+Enter Play Mode to run the prototype.
+
+👤 Author
+Bartu Şanlı - Solo Developer (Game Design & Programming)
+
+GitHub: [@bartusanli](https://github.com/bartusanli)
+
+Project: [Grain Island](https://github.com/bartusanli/Grain-Island)
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
